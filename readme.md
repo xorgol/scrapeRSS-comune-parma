@@ -8,3 +8,6 @@ https://adrianofarina.it/pyRSS/comune.rss
 In order to run the script on a schedule I'm using good old cron. If you want to do the same, just open your crontab with `crontab -e`
 Then write in:
 ```0 0 * * * * python path/to/python/script.py > path/to/output.rss```
+
+# Different municipalities
+It turns out that the government has upgraded most local government websites to this standardized [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) system. That means that they're mostly all the same, so we can scrape the data to get RSS feed from all of them with just a few changes. There are some implementation differences between websites that I should address properly. The whole thing needs a refactor, I need to include temporal information for each item and create proper archives. However, for now I've just added a command line parameter allowing users to specify an URL, of the form https://www.comune.parma.it/it/novita/notizie or https://www.comune.re.it/novita/notizie. Notice that the Reggio version does not have a language nesting level, similar discrepancies are to be expected in each implementation, but the overall scraping seems to work decently enough.

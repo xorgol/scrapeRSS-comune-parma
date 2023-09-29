@@ -4,10 +4,19 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import rfeed
+import sys
+
+if(len(sys.argv)>= 2):
+    url = sys.argv[1]
+else:
+    url = "https://www.comune.parma.it/it/novita/notizie"
 
 #url of the page we want to scrape
-url = "https://www.comune.parma.it/it/novita/notizie"
-  
+comune = url.split('.it')[0] + '.it'
+#print("Comune: {}".format(comune))
+
+#print("URL: {}".format(url))
+
 # initiating the webdriver in headless mode
 op = webdriver.ChromeOptions()
 op.add_argument('--headless')
@@ -15,7 +24,7 @@ driver = webdriver.Chrome(options=op)
 driver.get(url) 
 
 # this is just to ensure that the page is loaded
-time.sleep(5) 
+time.sleep(2) 
 
   
 html = driver.page_source
@@ -28,8 +37,8 @@ items_ = []
 soup = BeautifulSoup(html, "html.parser")
 all_divs = soup.find_all(class_="card-title")
 #print("there are " + str(len(all_divs)) + " card titles")
-all_descriptions = soup.find_all(class_="mb-3 card-text")
-#print("there are {} card descriptions".format(all_descriptions))
+all_descriptions = soup.find_all(class_=["mb-3", "card-text"])
+#print("there are {} card descriptions".format(len(all_descriptions)))
 for i in range(0, len(all_divs)):
 #for d in all_divs:
     d = all_divs[i]
@@ -37,7 +46,7 @@ for i in range(0, len(all_divs)):
     #print(ah.text)
     #print(all_descriptions[i].string)
     #print("https://www.comune.parma.it" + ah['href'])
-    item = rfeed.Item(title=ah.text, link="https://www.comune.parma.it" + ah['href'], description=all_descriptions[i].string)
+    item = rfeed.Item(title=ah.text, link=comune + ah['href'], description=all_descriptions[i].string)
     items_.append(item)
 
 
