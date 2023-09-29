@@ -51,7 +51,9 @@ for i in range(0, len(all_divs)):
 
 
 # Create RSS Feed
-feed = rfeed.Feed(title="Novità Comune di Parma", description="Novità del comune di Parma", language="it", items=items_, link=url)
+nomeComune = soup.find(class_=["h2","no_toc"]).text
+feedTitle = "Novità " + nomeComune 
+feed = rfeed.Feed(title=feedTitle, description=feedTitle, language="it", items=items_, link=url)
   
 driver.close() # closing the webdriver
 
