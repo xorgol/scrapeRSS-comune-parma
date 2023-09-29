@@ -14,3 +14,5 @@ It turns out that the government has upgraded most local government websites to 
 
 Without command line parameters the script generates the feed for the Comune di Parma. In order to use it for another municipality use the URL of its news page as the first parameter. For example, in order to generate the feed for the Comune di Reggio Emilia use:
 ```python3 selenium101.py https://www.comune.re.it/novita/notizie > reggio.rss```
+
+I've tested with a handful of sites and I've only had a complete failure with some small mountain municipality which had awful response times, and with Bologna, because they have their own web design. However I've also noticed that some municipalities, like [Piacenza](https://www.comune.piacenza.it/it/feeds) and [Modena](http://www.comune.modena.it/salastampa/comunicati/RSS), do the smart thing, and already have proper RSS feeds. Kudos to them!
