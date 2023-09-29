@@ -11,3 +11,6 @@ Then write in:
 
 # Different municipalities
 It turns out that the government has upgraded most local government websites to this standardized [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) system. That means that they're mostly all the same, so we can scrape the data to get RSS feed from all of them with just a few changes. There are some implementation differences between websites that I should address properly. The whole thing needs a refactor, I need to include temporal information for each item and create proper archives. However, for now I've just added a command line parameter allowing users to specify an URL, of the form https://www.comune.parma.it/it/novita/notizie or https://www.comune.re.it/novita/notizie. Notice that the Reggio version does not have a language nesting level, similar discrepancies are to be expected in each implementation, but the overall scraping seems to work decently enough.
+
+Without command line parameters the script generates the feed for the Comune di Parma. In order to use it for another municipality use the URL of its news page as the first parameter. For example, in order to generate the feed for the Comune di Reggio Emilia use:
+```python3 selenium101.py https://www.comune.re.it/novita/notizie > reggio.rss```
