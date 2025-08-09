@@ -5,7 +5,7 @@ Right now it completely omits images and the creation dates for each news item.
 Only the latest 12 items are read. I should scan the whole archive, or simply append to an existing file.
 The result is just printed, I simply use output redirection to get a file.
 I'm running this script once an hour on my server, you should be able to point your RSS feed reader there:
-https://adrianofarina.it/pyRSS/comune.rss
+https://angelofarina.it/adriano/pyRSS/comune.rss
 
 # Installation
 
@@ -28,3 +28,8 @@ Without command line parameters the script generates the feed for the Comune di 
 ```python3 selenium101.py https://www.comune.re.it/novita/notizie > reggio.rss```
 
 I've tested with a handful of sites and I've only had a complete failure with some small mountain municipality which had awful response times, and with Bologna, because they have their own web design. However I've also noticed that some municipalities, like [Piacenza](https://www.comune.piacenza.it/it/feeds) and [Modena](http://www.comune.modena.it/salastampa/comunicati/RSS), do the smart thing, and already have proper RSS feeds. Kudos to them!
+
+# Regional news about Cultural Heritage
+
+On 2025-08-09 I've added a scraper for https://patrimonioculturale.regione.emilia-romagna.it/novita/notizie
+Its RSS feed is available at: https://angelofarina.it/adriano/pyRSS/scrapeRSS-cultura-regione/regione.rss
